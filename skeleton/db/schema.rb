@@ -14,15 +14,15 @@ ActiveRecord::Schema.define(version: 20170710184251) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.integer "prereq_id"
-    t.integer "instructor_id"
+    t.integer "prereq_id" #foreign key (courses)
+    t.integer "instructor_id" # foreign key (user)
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "enrollments", force: :cascade do |t|
-    t.integer "course_id"
-    t.integer "student_id"
+  create_table "enrollments", force: :cascade do |t| # joins table because it only has foreign keys
+    t.integer "course_id" #foreign key (course)
+    t.integer "student_id" #foreign key (user)
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
